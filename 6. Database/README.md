@@ -34,7 +34,7 @@ This guide will help you set up Elastic Search, Kibana, Minio, and Postgres usin
             environment:
             - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
             - ELASTICSEARCH_USERNAME=elastic
-            - ELASTICSEARCH_PASSWORD=admin123
+            - ELASTICSEARCH_PASSWORD=password
             ports:
             - "5601:5601"
             depends_on:
@@ -47,7 +47,6 @@ This guide will help you set up Elastic Search, Kibana, Minio, and Postgres usin
             image: minio/minio:latest
             container_name: minio
             environment:
-
             MINIO_ROOT_USER: admin
             MINIO_ROOT_PASSWORD: password
             ports:
@@ -72,9 +71,9 @@ This guide will help you set up Elastic Search, Kibana, Minio, and Postgres usin
             volumes:
             - ./postgres:/var/lib/postgresql/data 
             command: >
-                bash -c "chown -R postgres:postgres /var/lib/postgresql/data &&
-                        chmod -R 700 /var/lib/postgresql/data &&
-                        docker-entrypoint.sh postgres"
+            bash -c "chown -R postgres:postgres /var/lib/postgresql/data &&
+                    chmod -R 700 /var/lib/postgresql/data &&
+                    docker-entrypoint.sh postgres"
     ```
 
 2. Run the following command to start the services:
